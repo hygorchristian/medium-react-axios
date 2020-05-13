@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { useEffect, useState } from "react";
@@ -6,7 +7,7 @@ import "./App.css";
 
 const api_key = "435c8880fa41fdbe5fba133c47f78d2b";
 const BASE_URL = "https://api.themoviedb.org/3";
-const getImage = (path) => `https://image.tmdb.org/t/p/w500/${path}`;
+const getImage = (path) => `https://image.tmdb.org/t/p/w300/${path}`;
 
 function App() {
   const [data, setData] = useState([]);
@@ -24,12 +25,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {data.map((movie) => (
-          <div>
-            <img src={getImage(movie.poster_path)} />
-            <p>{movie.original_title}</p>
-          </div>
-        ))}
+        <div className="grid">
+          {data.map((movie) => (
+            <div className="item">
+              <img src={getImage(movie.poster_path)} />
+              <p>{movie.original_title}</p>
+            </div>
+          ))}
+        </div>
       </header>
     </div>
   );
